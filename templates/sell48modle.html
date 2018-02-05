@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>new </title>
+	<link rel="stylesheet" href="{% static "css/UI1css/semantic.css" %}">
+	<script src="{% static "js/jquery.min.js" %}"></script>
+	<script src="{% static "js/semantic.js" %}"></script>
+</head>
+<body>
+	<div class="ui thin left sidebar inverted vertical menu">
+	<div class="item"> <i class="browser icon"></i>option</div>
+	<div class="item"> option<i class="browser icon"></i></div>
+	<div class="item"> option<i class="browser icon"></i></div>
+	</div>
+	<div class="pusher">
+		
+	<div class="ui menu">
+	<div class="header item" id="menu"> Menu <i></i></div>
+		<div class="item">about us<i class="browser icon"></i></div>
+		<div class="item">location<i class="bar chart icon"></i></div>
+		<div class="item">others  <i class="idea icon"></i></div>
+	</div>
+        {% block item %}
+        {% endblock %}
+        <div style="margin: 20px 50px 20px 300px">
+		<div class="ui pagination menu">
+            {% if obs.has_previous %}
+			<a class="item" href="?page={{ obs.previous_page_number }}"> < </a>
+            {% endif %}
+			<div class="disable item">page {{ obs.number }} of {{ obs.paginator.num_pages }} </div>
+            {% if obs.has_next %}
+			<a class="item" href="?page={{ obs.next_page_number }}"> > </a>
+            {% endif %}
+		</div>
+        </div>
+	</div>
+	</div>
+		<script>
+		$("#menu").click(function(){
+			$('.ui.sidebar').sidebar('toggle')
+		});
+		</script>
+</body>
+</html>
